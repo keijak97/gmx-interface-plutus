@@ -8,6 +8,7 @@ const { parseEther } = ethers.utils;
 export const MAINNET = 56;
 export const TESTNET = 97;
 export const ETH_MAINNET = 1;
+export const GOERLI = 5;
 export const AVALANCHE = 43114;
 export const AVALANCHE_FUJI = 43113;
 export const ARBITRUM = 42161;
@@ -15,7 +16,7 @@ export const ARBITRUM_TESTNET = 421611;
 export const FEES_HIGH_BPS = 50;
 
 // TODO take it from web3
-export const DEFAULT_CHAIN_ID = ARBITRUM;
+export const DEFAULT_CHAIN_ID = GOERLI;
 export const CHAIN_ID = DEFAULT_CHAIN_ID;
 
 export const SUPPORTED_CHAIN_IDS = [ARBITRUM, AVALANCHE];
@@ -36,6 +37,7 @@ export const CHAIN_NAMES_MAP = {
   [ARBITRUM]: "Arbitrum",
   [AVALANCHE]: "Avalanche",
   [AVALANCHE_FUJI]: "Avalanche Fuji",
+  [GOERLI] : "Goerli"
 };
 
 export const GAS_PRICE_ADJUSTMENT_MAP = {
@@ -123,6 +125,18 @@ const constants = {
     // contract requires that execution fee be strictly greater than instead of gte
     DECREASE_ORDER_EXECUTION_GAS_FEE: parseEther("0.0100001"),
   },
+  [GOERLI]: {
+    nativeTokenSymbol: "ETH",
+    wrappedTokenSymbol: "WETH",
+    defaultCollateralSymbol: "ETH",
+    defaultFlagOrdersEnabled: false,
+    positionReaderPropsLength: 9,
+    v2: false,
+    SWAP_ORDER_EXECUTION_GAS_FEE: parseEther("0.01"),
+    INCREASE_ORDER_EXECUTION_GAS_FEE: parseEther("0.01"),
+    // contract requires that execution fee be strictly greater than instead of gte
+    DECREASE_ORDER_EXECUTION_GAS_FEE: parseEther("0.010000001"),
+  },
 };
 
 const ALCHEMY_WHITELISTED_DOMAINS = ["gmx.io", "app.gmx.io"];
@@ -149,6 +163,7 @@ export const RPC_PROVIDERS = {
   [ARBITRUM_TESTNET]: ["https://rinkeby.arbitrum.io/rpc"],
   [AVALANCHE]: ["https://api.avax.network/ext/bc/C/rpc"],
   [AVALANCHE_FUJI]: ["https://api.avax-test.network/ext/bc/C/rpc"],
+  [GOERLI] : ["https://goerli.infura.io/v3/bb6d3d1d7557465cb1933b905e69c819"]
 };
 
 export const FALLBACK_PROVIDERS = {
@@ -178,6 +193,17 @@ export const NETWORK_METADATA: { [chainId: number]: NetworkMetadata } = {
     },
     rpcUrls: RPC_PROVIDERS[TESTNET],
     blockExplorerUrls: ["https://testnet.bscscan.com/"],
+  },
+  [GOERLI]: {
+    chainId: "0x" + GOERLI.toString(16),
+    chainName: "GOERLI",
+    nativeCurrency: {
+      name: "ETH",
+      symbol: "ETH",
+      decimals: 18,
+    },
+    rpcUrls: RPC_PROVIDERS[GOERLI],
+    blockExplorerUrls: ["https://goerli.etherscan.io/"],
   },
   [ARBITRUM_TESTNET]: {
     chainId: "0x" + ARBITRUM_TESTNET.toString(16),
@@ -284,6 +310,9 @@ export function getExplorerUrl(chainId) {
     return "https://snowtrace.io/";
   } else if (chainId === AVALANCHE_FUJI) {
     return "https://testnet.snowtrace.io/";
+  }
+  else if (chainId === GOERLI) {
+    return "https://goerli.etherscan.io/";
   }
   return "https://etherscan.io/";
 }

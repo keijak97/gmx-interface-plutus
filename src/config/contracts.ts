@@ -1,5 +1,5 @@
 import { ethers } from "ethers";
-import { ARBITRUM, ARBITRUM_TESTNET, AVALANCHE, AVALANCHE_FUJI, MAINNET, TESTNET } from "./chains";
+import { ARBITRUM, ARBITRUM_TESTNET, AVALANCHE, AVALANCHE_FUJI,GOERLI, MAINNET, TESTNET } from "./chains";
 
 const { AddressZero } = ethers.constants;
 
@@ -204,6 +204,60 @@ const CONTRACTS = {
     Timelock: "0x8A68a039D555599Fd745f9343e8dE20C9eaFca75",
 
     Multicall: "0xcA11bde05977b3631167028862bE2a173976CA11",
+  },
+  [GOERLI] : {
+    // goerli
+    Vault: "0x5030a11f143faA685Cc29a0F9d60AfFdcd1a0846",
+    Router: "0x23709C0B1e17590ff542e1F8b1c11B5fac2cF471", //0xeDb3e68f13642216A791e8d97b2926DD3813EA8C
+    VaultReader: "0x7C7F337A43fF7BAA845D871A0E5e67E4241D6519",
+    Reader: "0x547Cb750081AdA763475B85758388C89f1409706",
+    GlpManager: "0x84406b11dC3BD53d8500df3A1c0A9b71D1a91368",
+    // RewardRouter: "0x8e256078AfAE075cF48cDBE4079b352262e9457c", // not deployed yet
+    // RewardReader: "0x77cf0941B9d0a3D5CbF52eeC0723D86dE6cF0D67", // not deployed yet
+
+    // https://github.com/OffchainLabs/arbitrum/blob/950c2f91b2e951cd3764394e0a73eac3797aecf3/packages/arb-ts/src/lib/networks.ts#L65
+    NATIVE_TOKEN: "0xD38bcfEb6175b0e966ad375bA4BaB18C5459dd28", // ethers.constants.AddressZero,
+    GLP: "0xD47d365294C9B98625A7469eE2C1213F3d2cc690",
+    GLP: AddressZero,
+    GMX: AddressZero,
+    ES_GMX: AddressZero,
+    BN_GMX: AddressZero,
+    USDG: AddressZero,
+    ES_GMX_IOU: AddressZero,
+    // TCR: "0x63D38b196701569B8e60377B3BFBDE9f450bbb52", // commented out because it's not deployed yet
+    // MYC: "0x6d76C0e16c852f4263Ca2bFab7C7cF153f7988b8", // GMT // commented out because it's not deployed yet
+    // ES_MYC: "0xe2b9C2F3c8BD2b6Bc1E75b5650133be26Ca324Af",
+    // BN_MYC: "0x6cb7A4b0360Cf1B54eE9140F8Da45726671E7fdb",
+    USDG: "0x167DE8139E8dd981E95cA5c8FFE3bc5a8ba23e4f",
+
+    // StakedMycTracker: "0x45E8f0770DD204388477CfA42315E883572E0DAA",
+    // BonusMycTracker: "0xa8D1b5e8b09782d64d75cd1d55444a3AbEaD0821",
+    // FeeMycTracker: "0x9e958AC42115a17C6d734D02c164e761daa2BC47",
+    // StakedMlpTracker: "0xFCe0334D8dd8Ae6f6dEb2784a7a6e1Bd3Dc645A2",
+    // FeeMlpTracker: "0xbdf67A0a70e4A5907559f4fA784b544365A2564F",
+
+    // StakedMycDistributor: "0x92E6D5464A3B4070031df73e0782951bD1a16d8C",
+    // StakedMlpDistributor: "0x74F067d10D4783937Ef7d9Dc6DeF27e7489e7802",
+
+    // MycVester: "0x59A3640b4C8aCF9D6E6107e9Ba16d8B7d7cC412c",
+    // MlpVester: "0xd3A37697c1B21DdE4F97636E294399e0fab9D235",
+
+    OrderBook: "0x6F5fcFB3eA8f1c3617380c6449c6B97417c6a5AC",
+    OldOrderBook: "0x8C43e958FF16EB6450F367411b39C432e29Aff6D", // Update this once deployed
+    // OrderExecutor: "0x9B12CF1bC134a9eE01DC456fbb13a662C2dcf443",
+    OrderBookReader: "0xf0795564833f286732858550562f6307b497f133", // not deployed yet
+    PositionRouter: "0x3DfE7CC55b1af84d57D65f8575D6fB6fE13f8433",
+    PositionManager: "0x228f19BEcF0B7Da2d5a8995cd99514048865C88e",
+    // PositionCreator: "0x67cDf2a2f2c1a5FF13dAaF425523e4919bE93993",
+
+    ReferralStorage: "0x424363fdF95A5177782618C2972b3B7849Cc8aE4",
+    // ReferralReader: "0xb220724b6b68a84392eC22e841eDe5519863A21F",
+
+    // TODO: Change these once deployed
+    // FeeDistributor: "0x057B99E0112A0D9fDA7503bDc8b6995fA2ff997D",
+    // FeeDistributorReader: "0x55ce0A81b697f1eff846e8a56D3f303A5BE490b1",
+    // MerkleDistributor: "0xEC503757C71440A7c82B6BB2d689bC4d191bC75d",
+    // MerkleDistributorReader: "0xbB097d322D793ecd03721538d906d0C450d3839C",
   },
 
   [AVALANCHE_FUJI]: {

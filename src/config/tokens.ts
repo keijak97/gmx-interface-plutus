@@ -1,6 +1,6 @@
 import { ethers } from "ethers";
 import { getContract } from "./contracts";
-import { ARBITRUM, ARBITRUM_TESTNET, AVALANCHE, AVALANCHE_FUJI, MAINNET, TESTNET } from "./chains";
+import { ARBITRUM, ARBITRUM_TESTNET, AVALANCHE, AVALANCHE_FUJI, MAINNET, GOERLI,TESTNET } from "./chains";
 import { Token } from "domain/tokens";
 
 export const TOKENS: { [chainId: number]: Token[] } = {
@@ -370,7 +370,33 @@ export const TOKENS: { [chainId: number]: Token[] } = {
       isStable: true,
       imageUrl: "https://assets.coingecko.com/coins/images/6319/thumb/USD_Coin_icon.png?1547042389",
     },
+    
   ],
+  [GOERLI] : [
+    {
+      name: "Ethereum",
+      symbol: "ETH",
+      decimals: 18,
+      address: ethers.constants.AddressZero,
+      isNative: true,
+      // isEnabledForTrading: true,
+    },
+    {
+      name: "Wrapped Ethereum",
+      symbol: "WETH",
+      decimals: 18,
+      address: "0xD38bcfEb6175b0e966ad375bA4BaB18C5459dd28",
+      isShortable: true,
+      // isEnabledForTrading: true,
+    },
+    {
+      name: "Bitcoin (WBTC)",
+      symbol: "BTC",
+      decimals: 18,
+      address: "0x53C79975aD86b21556241C5558DfA055041e0a2E",
+      isShortable: true,
+      // isEnabledForTrading: true,
+    },]
 };
 
 export const ADDITIONAL_TOKENS: { [chainId: number]: Token[] } = {

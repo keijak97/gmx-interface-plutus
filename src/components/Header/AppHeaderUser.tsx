@@ -11,7 +11,7 @@ import cx from "classnames";
 import { Trans } from "@lingui/macro";
 import NetworkDropdown from "../NetworkDropdown/NetworkDropdown";
 import LanguagePopupHome from "../NetworkDropdown/LanguagePopupHome";
-import { ARBITRUM, ARBITRUM_TESTNET, AVALANCHE, AVALANCHE_FUJI, getChainName } from "config/chains";
+import { ARBITRUM, ARBITRUM_TESTNET, AVALANCHE,TESTNET, AVALANCHE_FUJI,GOERLI, getChainName } from "config/chains";
 import { switchNetwork } from "lib/wallets";
 import { useChainId } from "lib/chains";
 import { isDevelopment } from "config/env";
@@ -38,7 +38,7 @@ const NETWORK_OPTIONS = [
     value: AVALANCHE,
     icon: getIcon(AVALANCHE, "network"),
     color: "#E841424D",
-  },
+  }
 ];
 
 if (isDevelopment()) {
@@ -53,7 +53,20 @@ if (isDevelopment()) {
     value: AVALANCHE_FUJI,
     icon: getIcon(AVALANCHE_FUJI, "network"),
     color: "#E841424D",
-  });
+  },
+  {
+    label: getChainName(GOERLI),
+    value: GOERLI,
+    icon: getIcon(GOERLI, "network"),
+    color: "#E841424D",
+  },
+
+  {
+    label: getChainName(TESTNET),
+    value: TESTNET,
+    icon: getIcon(TESTNET, "network"),
+    color: "#E841424D",
+  },);
 }
 
 export function AppHeaderUser({
